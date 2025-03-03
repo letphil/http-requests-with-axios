@@ -255,3 +255,7 @@ getTwoPokemon("bulbasaur", "charmander");
 - We built a **Pokédex using Axios** to search, navigate, and display Pokémon data.
 
 🚀 Now you can use Axios confidently! Let me know if you need more exercises!
+
+### docs
+
+- https://developer.mozilla.org/en-US/docs/Web/API/URLSearchParams
