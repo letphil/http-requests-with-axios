@@ -1,7 +1,3 @@
-# **📚 1-Hour Lesson on Axios (Using the Pokémon API)**
-
----
-
 ### **⏳ Lesson Breakdown**
 
 - What is Axios? Why use it over `fetch()`?
@@ -30,7 +26,7 @@ Axios is a **JavaScript library** for making HTTP requests. It works in both the
 
 ---
 
-## **🔹 2. How to Make GET Requests with Axios (15 min)**
+## **🔹 2. How to Make GET Requests with Axios**
 
 ### **Basic GET Request Example**
 
