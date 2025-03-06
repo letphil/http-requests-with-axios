@@ -16,17 +16,66 @@
       // construct url => <url>?pokemon=<name>,<name>,<name>...
       // and list pokemon and style data shown in detail page
 
+      // could instantiate a variable. pokemons and push to it if not includes and splice it out if includes
+      // maybe indexOf would be good too
+      // and if the array is filled you can show the button
+      // and when you send over the url. use join on the array
+
+      // 1. instantiate a variable called selectedPokemon as empty array
+      const selectedPokemon = [];
+
+      // 2. in handleCheckbox function get name and push to selectedPokemon if not in array and if in array remove taht name from array
       function handleCheckbox(name) {
-        console.log(name);
+        // selectedPokemon.indexOf(name) === -1 ? selectedPokemon.push(name) : selectedPokemon.splice(selectedPokemon.indexOf(name), 1)
+        const existsIdx = selectedPokemon.indexOf(name);
+        if (existsIdx === -1) {
+          selectedPokemon.push(name);
+        } else {
+          selectedPokemon.splice(existsIdx, 1);
+        }
+
+        if (document.getElementById("submit")) {
+          if (!selectedPokemon.length) {
+            document.getElementById("submit").remove();
+          }
+        } else {
+          if (selectedPokemon.length) {
+            const submit = document.createElement("btn");
+            submit.id = "submit";
+            submit.textContent = "Submit Pokemon";
+            submit.onclick = function () {
+              window.location.href =
+                "/practice/details.html?pokemon=" + selectedPokemon.join(",");
+            };
+            mainContainer.prepend(submit);
+          }
+        }
+
+        // if (selectedPokemon.length && !document.getElementById("submit")) {
+        //   const submit = document.createElement("btn");
+        //   submit.id = "submit";
+        //   submit.textContent = "TESTING!";
+        //   mainContainer.prepend(submit);
+        // } else {
+        //   // mainContainer.remove(submit);
+        //   document.getElementById("submit").remove();
+        // }
+
+        console.log("selectedPokemon =", selectedPokemon);
       }
+
+      // 3. if selectedPokemon length not equal to 0 show button to go to next page with selected pokemon
+
+      // 4. craete function to move page to next page with selectedPokemon array with join to turn into string
 
       const mainContainer = document.querySelector(".container");
       const pokemonListItem = (id, name, type) => {
         return `
           <div>
-            <a href="/practice/details.html?pokemon=${name}"><h2>${id} - ${name}</h2></a>
-      <input type="checkbox" value="${name}" onchange="handleCheckbox('${name}')" />;
-
+            <h2>
+              <a href="/practice/details.html?pokemon=${name}">${id} - ${name}</a>
+              <input type="checkbox" value="${name}" onchange="handleCheckbox('${name}')" />
+            </h2>
           </div>
         `;
       };
